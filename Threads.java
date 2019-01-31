@@ -17,8 +17,8 @@ public class Threads {
 						
 			int num = 0;
 			while (num!=lock_array.length) {
-				System.out.println(lock_array.length);
-				System.out.println(num);
+				//System.out.println(lock_array.length);
+				//System.out.println(num);
 				
 				for (int w = 0; w<threads.length; w++) {
 					//System.out.println(w);
@@ -30,22 +30,21 @@ public class Threads {
 							
 							for (int i = 0; i < lock_array.length; i++) {
 								//System.out.println(array[i]);
-								System.out.println(lock_array[i].get());
+								//System.out.println(lock_array[i].get());
 								if (lock_array[i].compareAndSet(0, 1)==true) {
-									System.out.print(array[i]);
+									//System.out.print(array[i]);
 									Picture pic = new Picture(array[i]);
 									filters.sepiaFilter(pic);
-									pic.savePicture("newPic_"+i+"_.jpg"); 
+								
+									pic.savePicture("sepia_"+(array[i].substring(array[i].lastIndexOf("/") + 1))); 
 									pic = null;
 									break;
 								}
-								else {
-									System.out.println("nie można nic zrobic");
-								}
+								
 									
 								}
 	
-							System.out.println("wątek zakończony");
+							//System.out.println("wątek zakończony");
 							latch.countDown();  // odpala countdwonlatcha w momencie gdy zakonczymy wykonywać wątek
 							
 						}
@@ -61,7 +60,6 @@ public class Threads {
 			latch.await(); // czekamy az wszystkie watki się wykonają
 			num++;
 		}
-			
 	}
 
 }

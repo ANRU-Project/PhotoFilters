@@ -22,9 +22,14 @@ public class Main {
 		
 		ExecutorService executor = Executors.newFixedThreadPool(numberOfProcessors);
 		
+		long time_start = System.nanoTime();
 		new Threads(files.array, filters, executor, lockers.array); 
 		
+
 		executor.shutdown();
+		long time_end = System.nanoTime();
+		long time = time_end - time_start;
+		System.out.println(time);
 		
 		
 
