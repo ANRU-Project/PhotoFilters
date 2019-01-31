@@ -1,33 +1,58 @@
 package pl.rucinski.antoni.wdprir.pics;
 
-import java.io.File;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class Main {
 
 	
 
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 		
+		//Filters filters = new Filters();
+		Files files = new Files("/home/anru/Pictures/testing/");
+		Lockers lockers = new Lockers(files.array.length);
+		Filters filters = new Filters();
+		
+		lockers.resetLocker();
+		
+		int numberOfProcessors = Runtime.getRuntime().availableProcessors(); 
+		
+		
+		ExecutorService executor = Executors.newFixedThreadPool(numberOfProcessors);
+		
+		new Threads(files.array, filters, executor, lockers.array); 
+		
+		executor.shutdown();
 		
 		
 
-		String path = "...";
+			
+		
+		
+		/**
+		String path = "/home/anru/Pictures/NIKON/";
 		File folder = new File(path);
 		File[] listOfFiles = folder.listFiles();
 
+		
+		
 		for (File file : listOfFiles) {
 			if (file.isFile()) {
+				
 				System.out.println(path+file.getName());
 				Picture pic = new Picture(path + (String) file.getName());
-				Filters filters = new Filters();
-
+				pic.resizeImage(pic.width/500, pic.height/500);
+				
 				filters.sepiaFilter(pic);
 				pic.savePicture("newPic" +"_"+(String) file.getName());
 				
 				System.out.println("newPic" +"_"+(String) file.getName());
+				pic = null;
 			}
 		}
+		**/
 
 	}
 

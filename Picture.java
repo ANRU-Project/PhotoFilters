@@ -1,5 +1,6 @@
 package pl.rucinski.antoni.wdprir.pics;
 
+import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -37,6 +38,10 @@ public class Picture {
 		}
 		
 		return img;
+	}
+	
+	public void resizeImage(int newWidth, int newHeight) {
+		img.getScaledInstance(newWidth, newHeight, Image.SCALE_DEFAULT);
 	}
 	
 	/**
