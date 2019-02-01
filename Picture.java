@@ -7,14 +7,12 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-// http://blog.ivank.net/fastest-gaussian-blur.html
 public class Picture {
 	BufferedImage img;
 	public int width;
 	public int height;
 	public int[][] target;
 	public Picture(String path) {
-		// TODO Auto-generated constructor stub
 		loadImage(path);
 	}
 
@@ -29,7 +27,7 @@ public class Picture {
 		//BufferedImage img = null;
 		try {
 		    img = ImageIO.read(new File(path));
-		    
+		    img.getScaledInstance(10, 10, Image.SCALE_FAST);
 		    width = img.getWidth(); // get width of the picture
 		    height = img.getHeight(); // get height if the picture
 		    System.out.println("Reading picture complete.");
@@ -40,6 +38,11 @@ public class Picture {
 		return img;
 	}
 	
+	/**
+	 * resizing picture
+	 * @param newWidth
+	 * @param newHeight
+	 */
 	public void resizeImage(int newWidth, int newHeight) {
 		img.getScaledInstance(newWidth, newHeight, Image.SCALE_DEFAULT);
 	}
@@ -58,16 +61,5 @@ public class Picture {
 	    }
 		
 	}
-	
 
-	
-	
-
-
-
-		    
-		
-	
-	
-	
 }

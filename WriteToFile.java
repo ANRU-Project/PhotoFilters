@@ -14,7 +14,7 @@ public class WriteToFile {
 		
 	}
 
-	public void writeToFile(int size, long time) throws IOException {
+	public void writeToFile(long size, long time) throws IOException {
 		
 		
 		File file = new File(filePath);
@@ -30,7 +30,7 @@ public class WriteToFile {
 		FileWriter fr = new FileWriter(file, true);
 		BufferedWriter br = new BufferedWriter(fr);
 		
-		br.write(Integer.toString(size)+ "\t" + Long.toString(time) + "\n");
+		br.write(Long.toString(size)+ "\t" + Long.toString(time) + "\n");
 		
 		br.close();
 		fr.close();

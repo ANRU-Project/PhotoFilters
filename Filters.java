@@ -65,6 +65,7 @@ public class Filters {
 		        p = setP(a, r, g, b);
 
 		        pic.img.setRGB(x, y, p);
+		        
 		      }
 		    }
 		System.out.println("Filter application completed successfully!");
