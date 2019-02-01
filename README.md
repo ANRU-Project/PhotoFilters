@@ -1,2 +1,2 @@
 # PhotoFilters
-Multithread vs sequential photo porcessing
+Multithread vs sequential photo processing
